@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="description" content="FlameHeart - Find your perfect match. A modern dating app with swipe-based matching.">
+  <title>FlameHeart – Find Your Match</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- ===================== ONBOARDING SCREEN ===================== -->
+  <section id="screen-onboarding" class="screen active">
+    <div class="onboarding-bg">
+      <div class="floating-hearts">
+        <span class="heart h1">💕</span>
+        <span class="heart h2">💗</span>
+        <span class="heart h3">✨</span>
+        <span class="heart h4">💖</span>
+        <span class="heart h5">💜</span>
+        <span class="heart h6">❤️</span>
+        <span class="heart h7">💫</span>
+        <span class="heart h8">💝</span>
+      </div>
+    </div>
+    <div class="onboarding-content">
+      <div class="onboarding-logo animate-bounce-in">
+        <img src="assets/logo.png" alt="FlameHeart Logo" class="logo-img" id="onboarding-logo-img">
+        <h1 class="app-name">Flame<span class="highlight">Heart</span></h1>
+        <p class="app-tagline">Where connections ignite</p>
+      </div>
+      <div class="onboarding-features animate-slide-up" style="animation-delay: 0.3s">
+        <div class="feature-item">
+          <div class="feature-icon"><i class="fas fa-heart"></i></div>
+          <div class="feature-text">
+            <h3>Smart Matching</h3>
+            <p>AI-powered compatibility</p>
+          </div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-icon"><i class="fas fa-comments"></i></div>
+          <div class="feature-text">
+            <h3>Real Connections</h3>
+            <p>Meaningful conversations</p>
+          </div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-icon"><i class="fas fa-shield-heart"></i></div>
+          <div class="feature-text">
+            <h3>Safe & Secure</h3>
+            <p>Verified profiles only</p>
+          </div>
+        </div>
+      </div>
+      <div class="onboarding-actions animate-slide-up" style="animation-delay: 0.6s">
+        <button class="btn btn-primary btn-glow" id="btn-get-started" onclick="navigateTo('screen-login')">
+          <span>Get Started</span>
+          <i class="fas fa-arrow-right"></i>
+        </button>
+        <div class="onboarding-links">
+          <button class="btn-link" onclick="navigateTo('screen-login', 'login')">Already have an account? <span>Log In</span></button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== LOGIN / SIGNUP SCREEN ===================== -->
+  <section id="screen-login" class="screen">
+    <div class="login-bg"></div>
+    <div class="login-container">
+      <button class="btn-back" onclick="navigateTo('screen-onboarding')">
+        <i class="fas fa-arrow-left"></i>
+      </button>
+      <div class="login-card glass-card">
+        <div class="login-header">
+          <img src="assets/logo.png" alt="FlameHeart" class="login-logo">
+          <h2 id="auth-title">Welcome Back</h2>
+          <p id="auth-subtitle">Sign in to continue your journey</p>
+        </div>
+        <div class="auth-tabs">
+          <button class="auth-tab active" id="tab-login" onclick="switchAuthTab('login')">Log In</button>
+          <button class="auth-tab" id="tab-signup" onclick="switchAuthTab('signup')">Sign Up</button>
+        </div>
+        <form id="auth-form" class="auth-form" onsubmit="handleAuth(event)">
+          <div id="signup-name-field" class="form-group hidden">
+            <div class="input-wrapper">
+              <i class="fas fa-user"></i>
+              <input type="text" id="auth-name" placeholder="Full Name" autocomplete="name">
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="input-wrapper">
+              <i class="fas fa-envelope"></i>
+              <input type="email" id="auth-email" placeholder="Email Address" autocomplete="email" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="input-wrapper">
+              <i class="fas fa-lock"></i>
+              <input type="password" id="auth-password" placeholder="Password" autocomplete="current-password" required>
+              <button type="button" class="toggle-password" onclick="togglePassword()">
+                <i class="fas fa-eye"></i>
+              </button>
+            </div>
+          </div>
+          <button type="submit" class="btn btn-primary btn-full" id="auth-submit-btn">
+            <span id="auth-btn-text">Log In</span>
+            <div class="btn-loader hidden" id="auth-loader"></div>
+          </button>
+        </form>
+        <div class="auth-divider">
+          <span>or continue with</span>
+        </div>
+        <div class="social-login">
+          <button class="btn-social btn-google" onclick="socialLogin('google')">
+            <i class="fab fa-google"></i>
+            <span>Google</span>
+          </button>
+          <button class="btn-social btn-facebook" onclick="socialLogin('facebook')">
+            <i class="fab fa-facebook-f"></i>
+            <span>Facebook</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== HOME SCREEN (SWIPE) ===================== -->
+  <section id="screen-home" class="screen">
+    <header class="top-bar">
+      <div class="top-bar-left">
+        <img src="assets/logo.png" alt="FlameHeart" class="top-bar-logo">
+        <span class="top-bar-name">Flame<span class="highlight">Heart</span></span>
+      </div>
+      <div class="top-bar-right">
+        <button class="icon-btn" id="btn-filter" onclick="toggleFilterPanel()">
+          <i class="fas fa-sliders"></i>
+        </button>
+        <button class="icon-btn" onclick="navigateTo('screen-profile')">
+          <div class="avatar-small" id="nav-avatar"></div>
+        </button>
+      </div>
+    </header>
+
+    <!-- Filter Panel -->
+    <div class="filter-panel hidden" id="filter-panel">
+      <div class="filter-panel-content glass-card">
+        <h3><i class="fas fa-filter"></i> Filters</h3>
+        <div class="filter-group">
+          <label>Age Range</label>
+          <div class="range-display"><span id="age-min-val">18</span> - <span id="age-max-val">35</span></div>
+          <input type="range" min="18" max="60" value="35" class="range-slider" id="age-range" oninput="document.getElementById('age-max-val').textContent = this.value">
+        </div>
+        <div class="filter-group">
+          <label>Distance</label>
+          <div class="range-display"><span id="dist-val">25</span> km</div>
+          <input type="range" min="1" max="100" value="25" class="range-slider" id="dist-range" oninput="document.getElementById('dist-val').textContent = this.value">
+        </div>
+        <div class="filter-group">
+          <label>Interests</label>
+          <div class="filter-tags">
+            <span class="filter-tag active" onclick="this.classList.toggle('active')">Travel</span>
+            <span class="filter-tag" onclick="this.classList.toggle('active')">Music</span>
+            <span class="filter-tag active" onclick="this.classList.toggle('active')">Fitness</span>
+            <span class="filter-tag" onclick="this.classList.toggle('active')">Food</span>
+            <span class="filter-tag" onclick="this.classList.toggle('active')">Art</span>
+            <span class="filter-tag" onclick="this.classList.toggle('active')">Movies</span>
+          </div>
+        </div>
+        <button class="btn btn-primary btn-full" onclick="toggleFilterPanel()">Apply Filters</button>
+      </div>
+    </div>
+
+    <div class="swipe-container" id="swipe-container">
+      <div class="swipe-cards" id="swipe-cards">
+        <!-- Cards injected by JS -->
+      </div>
+      <div class="no-more-cards hidden" id="no-more-cards">
+        <div class="empty-state">
+          <i class="fas fa-heart-crack"></i>
+          <h3>No more profiles</h3>
+          <p>Check back later for new matches!</p>
+          <button class="btn btn-primary" onclick="resetCards()">
+            <i class="fas fa-redo"></i> Refresh
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="swipe-actions">
+      <button class="action-btn action-dislike" id="btn-dislike" onclick="swipeAction('left')">
+        <i class="fas fa-times"></i>
+      </button>
+      <button class="action-btn action-superlike" id="btn-superlike" onclick="swipeAction('up')">
+        <i class="fas fa-star"></i>
+      </button>
+      <button class="action-btn action-like" id="btn-like" onclick="swipeAction('right')">
+        <i class="fas fa-heart"></i>
+      </button>
+    </div>
+
+    <!-- Bottom Nav -->
+    <nav class="bottom-nav" id="bottom-nav">
+      <button class="nav-item active" id="nav-home" onclick="navigateTo('screen-home')">
+        <i class="fas fa-fire"></i>
+        <span>Discover</span>
+      </button>
+      <button class="nav-item" id="nav-matches" onclick="navigateTo('screen-matches')">
+        <i class="fas fa-heart"></i>
+        <span>Matches</span>
+        <div class="nav-badge" id="match-badge">3</div>
+      </button>
+      <button class="nav-item" id="nav-chat" onclick="navigateTo('screen-chat')">
+        <i class="fas fa-comment-dots"></i>
+        <span>Chat</span>
+        <div class="nav-badge">2</div>
+      </button>
+      <button class="nav-item" id="nav-profile" onclick="navigateTo('screen-profile')">
+        <i class="fas fa-user"></i>
+        <span>Profile</span>
+      </button>
+    </nav>
+  </section>
+
+  <!-- ===================== MATCHES SCREEN ===================== -->
+  <section id="screen-matches" class="screen">
+    <header class="top-bar">
+      <div class="top-bar-left">
+        <button class="btn-back" onclick="navigateTo('screen-home')">
+          <i class="fas fa-arrow-left"></i>
+        </button>
+        <h2 class="page-title"><i class="fas fa-heart" style="color: var(--primary)"></i> Matches</h2>
+      </div>
+      <div class="top-bar-right">
+        <button class="icon-btn">
+          <i class="fas fa-search"></i>
+        </button>
+      </div>
+    </header>
+
+    <div class="matches-content">
+      <div class="matches-section">
+        <h3 class="section-title">New Matches <span class="count-badge" id="new-match-count">3</span></h3>
+        <div class="new-matches-scroll" id="new-matches-list">
+          <!-- Injected by JS -->
+        </div>
+      </div>
+      <div class="matches-section">
+        <h3 class="section-title">Messages</h3>
+        <div class="messages-list" id="messages-list">
+          <!-- Injected by JS -->
+        </div>
+      </div>
+    </div>
+
+    <nav class="bottom-nav">
+      <button class="nav-item" onclick="navigateTo('screen-home')">
+        <i class="fas fa-fire"></i>
+        <span>Discover</span>
+      </button>
+      <button class="nav-item active" onclick="navigateTo('screen-matches')">
+        <i class="fas fa-heart"></i>
+        <span>Matches</span>
+      </button>
+      <button class="nav-item" onclick="navigateTo('screen-chat')">
+        <i class="fas fa-comment-dots"></i>
+        <span>Chat</span>
+      </button>
+      <button class="nav-item" onclick="navigateTo('screen-profile')">
+        <i class="fas fa-user"></i>
+        <span>Profile</span>
+      </button>
+    </nav>
+  </section>
+
+  <!-- ===================== CHAT SCREEN ===================== -->
+  <section id="screen-chat" class="screen">
+    <header class="chat-header">
+      <button class="btn-back" onclick="navigateTo('screen-matches')">
+        <i class="fas fa-arrow-left"></i>
+      </button>
+      <div class="chat-user-info" id="chat-user-info">
+        <div class="avatar-small chat-avatar" id="chat-avatar"></div>
+        <div>
+          <h3 id="chat-user-name">Emma</h3>
+          <span class="online-status"><span class="online-dot"></span> Online</span>
+        </div>
+      </div>
+      <div class="chat-header-actions">
+        <button class="icon-btn"><i class="fas fa-phone"></i></button>
+        <button class="icon-btn"><i class="fas fa-video"></i></button>
+        <button class="icon-btn"><i class="fas fa-ellipsis-v"></i></button>
+      </div>
+    </header>
+
+    <div class="chat-messages" id="chat-messages">
+      <!-- Injected by JS -->
+    </div>
+
+    <div class="chat-input-area">
+      <div class="chat-input-wrapper">
+        <button class="icon-btn chat-attach"><i class="fas fa-plus"></i></button>
+        <input type="text" id="chat-input" placeholder="Type a message..." autocomplete="off" onkeydown="if(event.key==='Enter')sendMessage()">
+        <button class="icon-btn chat-emoji"><i class="fas fa-smile"></i></button>
+      </div>
+      <button class="btn-send" id="btn-send" onclick="sendMessage()">
+        <i class="fas fa-paper-plane"></i>
+      </button>
+    </div>
+
+    <nav class="bottom-nav">
+      <button class="nav-item" onclick="navigateTo('screen-home')">
+        <i class="fas fa-fire"></i>
+        <span>Discover</span>
+      </button>
+      <button class="nav-item" onclick="navigateTo('screen-matches')">
+        <i class="fas fa-heart"></i>
+        <span>Matches</span>
+      </button>
+      <button class="nav-item active" onclick="navigateTo('screen-chat')">
+        <i class="fas fa-comment-dots"></i>
+        <span>Chat</span>
+      </button>
+      <button class="nav-item" onclick="navigateTo('screen-profile')">
+        <i class="fas fa-user"></i>
+        <span>Profile</span>
+      </button>
+    </nav>
+  </section>
+
+  <!-- ===================== PROFILE SCREEN ===================== -->
+  <section id="screen-profile" class="screen">
+    <header class="profile-header">
+      <div class="profile-header-bg"></div>
+      <div class="profile-header-content">
+        <button class="btn-back btn-back-light" onclick="navigateTo('screen-home')">
+          <i class="fas fa-arrow-left"></i>
+        </button>
+        <button class="icon-btn btn-back-light" onclick="toggleEditProfile()">
+          <i class="fas fa-cog"></i>
+        </button>
+      </div>
+      <div class="profile-avatar-section">
+        <div class="profile-avatar" id="profile-avatar">
+          <div class="avatar-edit-overlay" onclick="document.getElementById('avatar-upload').click()">
+            <i class="fas fa-camera"></i>
+          </div>
+        </div>
+        <input type="file" id="avatar-upload" accept="image/*" class="hidden" onchange="handleAvatarUpload(event)">
+        <h2 class="profile-name" id="profile-name">Alex Johnson</h2>
+        <p class="profile-age-loc" id="profile-age-loc">26 · New York, NY</p>
+      </div>
+    </header>
+
+    <div class="profile-body">
+      <div class="profile-stats">
+        <div class="stat-item">
+          <span class="stat-number" id="stat-likes">128</span>
+          <span class="stat-label">Likes</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number" id="stat-matches">24</span>
+          <span class="stat-label">Matches</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number" id="stat-views">1.2k</span>
+          <span class="stat-label">Views</span>
+        </div>
+      </div>
+
+      <!-- Profile cards -->
+      <div class="profile-card glass-card">
+        <div class="card-header">
+          <h3><i class="fas fa-user"></i> About Me</h3>
+          <button class="btn-edit" onclick="toggleEditField('bio')"><i class="fas fa-pen"></i></button>
+        </div>
+        <p class="bio-text" id="profile-bio">Adventure seeker & coffee lover ☕ | Love exploring new places and trying exotic cuisines. Looking for someone who enjoys long walks, deep conversations, and spontaneous road trips! 🌍</p>
+        <textarea class="bio-edit hidden" id="bio-edit" rows="4"></textarea>
+      </div>
+
+      <div class="profile-card glass-card">
+        <div class="card-header">
+          <h3><i class="fas fa-images"></i> Photos</h3>
+          <button class="btn-edit"><i class="fas fa-plus"></i></button>
+        </div>
+        <div class="photo-gallery" id="photo-gallery">
+          <!-- Injected by JS -->
+        </div>
+      </div>
+
+      <div class="profile-card glass-card">
+        <div class="card-header">
+          <h3><i class="fas fa-heart"></i> Interests</h3>
+          <button class="btn-edit" onclick="toggleEditField('interests')"><i class="fas fa-pen"></i></button>
+        </div>
+        <div class="interests-list" id="interests-list">
+          <!-- Injected by JS -->
+        </div>
+      </div>
+
+      <div class="profile-card glass-card">
+        <div class="card-header">
+          <h3><i class="fas fa-info-circle"></i> Details</h3>
+        </div>
+        <div class="details-list">
+          <div class="detail-item">
+            <i class="fas fa-map-marker-alt"></i>
+            <span id="detail-location">New York, NY</span>
+          </div>
+          <div class="detail-item">
+            <i class="fas fa-briefcase"></i>
+            <span id="detail-work">Software Engineer at Google</span>
+          </div>
+          <div class="detail-item">
+            <i class="fas fa-graduation-cap"></i>
+            <span id="detail-education">Stanford University</span>
+          </div>
+          <div class="detail-item">
+            <i class="fas fa-ruler-vertical"></i>
+            <span id="detail-height">5'11" (180 cm)</span>
+          </div>
+        </div>
+      </div>
+
+      <button class="btn btn-outline btn-full" onclick="handleLogout()" style="margin-top: 1rem; margin-bottom: 6rem;">
+        <i class="fas fa-sign-out-alt"></i> Log Out
+      </button>
+    </div>
+
+    <nav class="bottom-nav">
+      <button class="nav-item" onclick="navigateTo('screen-home')">
+        <i class="fas fa-fire"></i>
+        <span>Discover</span>
+      </button>
+      <button class="nav-item" onclick="navigateTo('screen-matches')">
+        <i class="fas fa-heart"></i>
+        <span>Matches</span>
+      </button>
+      <button class="nav-item" onclick="navigateTo('screen-chat')">
+        <i class="fas fa-comment-dots"></i>
+        <span>Chat</span>
+      </button>
+      <button class="nav-item active" onclick="navigateTo('screen-profile')">
+        <i class="fas fa-user"></i>
+        <span>Profile</span>
+      </button>
+    </nav>
+  </section>
+
+  <!-- Match Animation Overlay -->
+  <div class="match-overlay hidden" id="match-overlay">
+    <div class="match-animation">
+      <div class="match-hearts">
+        <span>💖</span><span>💕</span><span>✨</span><span>💗</span><span>💝</span>
+      </div>
+      <h2 class="match-title">It's a Match!</h2>
+      <p class="match-subtitle">You and <span id="match-name">Emma</span> liked each other</p>
+      <div class="match-avatars">
+        <div class="match-avatar" id="match-avatar-you"></div>
+        <div class="match-heart-icon"><i class="fas fa-heart"></i></div>
+        <div class="match-avatar" id="match-avatar-them"></div>
+      </div>
+      <div class="match-actions">
+        <button class="btn btn-primary" onclick="openChatFromMatch()">Send a Message</button>
+        <button class="btn btn-outline" onclick="closeMatchOverlay()">Keep Swiping</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notifications -->
+  <div class="toast-container" id="toast-container"></div>
+
+  <script src="app.js"></script>
+</body>
+</html>
