@@ -19,7 +19,7 @@ const DEMO_DATA = {
       id: 'p1', name: 'Sophia', age: 24,
       bio: 'Art lover & sunset chaser 🌅 Living life one adventure at a time.',
       location: 'Brooklyn, NY · 3 km away',
-      photo: 'assests/profile1.png',
+      photo: 'https://drive.google.com/file/d/1kwvU-e-B-8B9OSeLTfOBGEXjWGQFGjzZ/view?usp=drivesdk',
       tags: ['Art 🎨', 'Travel', 'Wine 🍷']
     },
     {
