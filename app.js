@@ -10,7 +10,7 @@ const DEMO_DATA = {
     work: 'Software Engineer at Google',
     education: 'Stanford University',
     height: '5\'11" (180 cm)',
-    photos: ['assets/profile1.png'],
+    photos: ['assests/profile1.png'],
     interests: ['Travel ✈️', 'Photography 📸', 'Cooking 🍳', 'Hiking 🏔️', 'Music 🎵', 'Coffee ☕', 'Movies 🎬', 'Yoga 🧘'],
     stats: { likes: 128, matches: 24, views: '1.2k' }
   },
@@ -19,59 +19,59 @@ const DEMO_DATA = {
       id: 'p1', name: 'Sophia', age: 24,
       bio: 'Art lover & sunset chaser 🌅 Living life one adventure at a time.',
       location: 'Brooklyn, NY · 3 km away',
-      photo: 'assets/profile1.png',
+      photo: 'assests/profile1.png',
       tags: ['Art 🎨', 'Travel', 'Wine 🍷']
     },
     {
       id: 'p2', name: 'James', age: 28,
       bio: 'Fitness enthusiast & dog dad 🐕 Looking for my gym partner and life partner.',
       location: 'Manhattan, NY · 5 km away',
-      photo: 'assets/profile2.png',
+      photo: 'assests/profile2.png',
       tags: ['Fitness 💪', 'Dogs 🐶', 'Cooking']
     },
     {
       id: 'p3', name: 'Emma', age: 23,
       bio: 'Bookworm turned world traveler 📚✈️ Tell me your favorite book!',
       location: 'Queens, NY · 8 km away',
-      photo: 'assets/profile3.png',
+      photo: 'assests/profile3.png',
       tags: ['Books 📖', 'Travel ✈️', 'Coffee ☕']
     },
     {
       id: 'p4', name: 'Michael', age: 27,
       bio: 'Music producer by day, chef by night 🎵🍳 Let me cook you dinner.',
       location: 'Hoboken, NJ · 12 km away',
-      photo: 'assets/profile4.png',
+      photo: 'assests/profile4.png',
       tags: ['Music 🎵', 'Food 🍕', 'Guitar 🎸']
     },
     {
       id: 'p5', name: 'Olivia', age: 25,
       bio: 'Dancing through life 💃 Love salsa, hiking, and trying new restaurants.',
       location: 'Jersey City, NJ · 10 km away',
-      photo: 'assets/profile1.png',
+      photo: 'assests/profile1.png',
       tags: ['Dance 💃', 'Hiking 🏔️', 'Foodie']
     },
     {
       id: 'p6', name: 'Daniel', age: 29,
       bio: 'Photographer capturing moments 📷 Looking for someone to be in the frame.',
       location: 'Bronx, NY · 15 km away',
-      photo: 'assets/profile2.png',
+      photo: 'assests/profile2.png',
       tags: ['Photography 📸', 'Travel', 'Art']
     }
   ],
   matches: [
-    { id: 'p3', name: 'Emma', photo: 'assets/profile3.png', isNew: true },
-    { id: 'p1', name: 'Sophia', photo: 'assets/profile1.png', isNew: true },
-    { id: 'p4', name: 'Michael', photo: 'assets/profile4.png', isNew: true },
+    { id: 'p3', name: 'Emma', photo: 'assests/profile3.png', isNew: true },
+    { id: 'p1', name: 'Sophia', photo: 'assests/profile1.png', isNew: true },
+    { id: 'p4', name: 'Michael', photo: 'assests/profile4.png', isNew: true },
     {
-      id: 'p2', name: 'James', photo: 'assets/profile2.png', isNew: false,
+      id: 'p2', name: 'James', photo: 'assests/profile2.png', isNew: false,
       lastMessage: 'Hey! Wanna grab coffee this weekend? ☕', time: '2m ago', unread: 2, online: true
     },
     {
-      id: 'p5', name: 'Olivia', photo: 'assets/profile1.png', isNew: false,
+      id: 'p5', name: 'Olivia', photo: 'assests/profile1.png', isNew: false,
       lastMessage: 'That hiking trail was amazing! 🏔️', time: '1h ago', unread: 0, online: false
     },
     {
-      id: 'p6', name: 'Daniel', photo: 'assets/profile2.png', isNew: false,
+      id: 'p6', name: 'Daniel', photo: 'assests/profile2.png', isNew: false,
       lastMessage: 'I\'d love to show you my gallery!', time: '3h ago', unread: 1, online: true
     }
   ],
